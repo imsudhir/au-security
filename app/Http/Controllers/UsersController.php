@@ -66,6 +66,22 @@ class UsersController extends Controller
         return view('guard.dashboard');
     }
     //end guard panel
+
+
+
+ //start client panel
+
+ public function client_dashboard()
+ {
+     return view('client.dashboard');
+ }
+ //end client panel
+
+
+
+
+
+
     public function view_details($id)
     {
         $model['data']=Users::find($id);

@@ -35,18 +35,20 @@
                     <td>{{$list->mobile}}</td>
                     <td>{{$list->address}}</td>
                     <td>
-                        <div class="btn-group" role="group" aria-label="Basic example">
-                         <a class="btn btn-primary" href="{{url('admin/guard/view_details')}}/{{$list->id}}">
-                            View     
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                         <a class="btn btn-primary" href="{{url('admin/guard/view_details')}}/{{$list->id}}" data-toggle="tooltip" data-placement="top" title="View details!">
+                         <i class="fa fa-eye" aria-hidden="true"></i>
+     
                         </a>
                        
                            @if ($list->verify_status == 1)
-                           <a class="btn btn-primary" href="{{url('admin/guard/verify_status/0')}}/{{$list->id}}">
-                             Verified    
+                           <a class="btn btn-primary" href="{{url('admin/guard/verify_status/0')}}/{{$list->id}}" data-toggle="tooltip" data-placement="top" title="Verified!">
+                             <i class="fa fa-check" aria-hidden="true"></i>
+    
                            </a>
                            @elseif($list->verify_status == 0)
-                           <a class="btn btn-warning" href="{{url('admin/guard/verify_status/1')}}/{{$list->id}}">
-                          Not Verified     
+                           <a class="btn btn-warning" href="{{url('admin/guard/verify_status/1')}}/{{$list->id}}" data-toggle="tooltip" data-placement="top" title="Not verified">
+                          <i class="fas fa-times"></i> 
                            </a>
                            @endif
                            @if ($list->active_status == 1)
@@ -59,13 +61,14 @@
                            </a>
                            @endif
 
-                           <a class="btn btn-warning" href ="{{url('admin/guard/send_guard_credentials')}}/{{$list->id}}">
-                             Send login data
+                           <a class="btn btn-warning" hr ef ="{{url('admin/guard/send_guard_credentials')}}/{{$list->id}}" data-toggle="tooltip" data-placement="top" title="Send login details!">
+                             <i class="fa fa-paper-plane" aria-hidden="true"></i>
+
                          </a>
                         
                       </div>
                     </td>
-                 
+                    
                 </tr>
                 @endforeach
                

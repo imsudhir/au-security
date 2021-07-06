@@ -28,9 +28,9 @@
     <!-- Main CSS-->
     
     <style>
-    #example_wrapper{
+     #example_wrapper{
     overflow-x: scroll !important;
-    width: -webkit-fill-available;
+    width: -webkit-fill-available !important;
     }
     .card {
         /* overflow-x: scroll !important; */
@@ -71,7 +71,7 @@
                     <div class="header-mobile-inner">
                         <a class="logo" href="index.html">
                             {{-- <img src="{{asset('admin_assets/images/icon/logo.png')}}" alt="CoolAdmin"> --}}
-                            Your Security
+                            Client Panel
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
@@ -178,7 +178,7 @@
         <!-- MENU SIDEBAR-->
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
-                <a href="{{url('admin/dashboard')}}">
+                <a href="{{url('client/jobs')}}">
                     <img style="width: 25%;" src="{{asset('admin_assets/images/icon/dash.png')}}" alt="CoolAdmin">
                    <b> Your Security</b>
 
@@ -187,25 +187,17 @@
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
-                        <li class="@yield('dashboard_selected')">
-                            <a href="{{url('admin/dashboard')}}" class="js-arrowp" >
-                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                            
+                       
+                        
+                        <li class="@yield('myJobs_selected')">
+                            <a  href="{{url('client/jobs')}}">
+                            <i class="fas fa-list" aria-hidden="true"></i>Job List</a>
                         </li>
-                        <li class="@yield('guard_selected')">
-                            <a  href="{{url('admin/guard')}}">
-                                <i class="fas fa-list"></i>Guard</a>
-                        </li>
-                        <li class="@yield('requirements_selected')">
-                            <a  href="{{url('admin/newjobs')}}">
-                                <i class="fas fa-tag"></i>New Jobs</a>
+                        <li class="@yield('product_selected')">
+                            <a  href="{{url('client/job/manage_job')}}">
+                            <i class="fas fa-plus"></i>Add Job</a>
                         </li>
                         
-            <!-- <hr style="color:black; border:1px solid;" /> -->
-            <li class="@yield('product_selected')">
-                            <a  href="{{url('admin/product')}}">
-                            <i class="fab fa-product-hunt" aria-hidden="true"></i>All Product</a>
-                        </li>
                         </li>
                     </ul>
                 </nav>
@@ -229,7 +221,7 @@
                                     <div class="account-item clearfix js-item-menu">
                                         
                                         <div class="content">
-                                            <a class="js-acc-btn" href="#">Welcome Admin</a>
+                                            <a class="js-acc-btn" href="#">Welcome {{session('CLIENT_NAME')}}</a>
                                         </div>
                                         <div class="account-dropdown js-dropdown">
                                         
@@ -240,7 +232,7 @@
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__footer">
-                                                <a href="{{url('admin/logout')}}">
+                                                <a href="{{url('client/logout')}}">
                                                     <i class="zmdi zmdi-power"></i>Logout</a>
                                             </div>
                                         </div>
@@ -314,7 +306,7 @@
  
     <script>
       $(document).ready(function() {
-    $('#example,#example3').DataTable({
+    $('#example').DataTable({
         responsive: true,
     });
 } );

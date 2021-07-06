@@ -49,6 +49,9 @@ class Kernel extends HttpKernel
         'guard_auth' => [
             \App\Http\Middleware\GuardAuth::class,
         ],
+        'client_auth' => [
+            \App\Http\Middleware\ClientAuth::class,
+        ],
     ];
 
     /**

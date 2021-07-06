@@ -51,7 +51,7 @@ class JobsController extends Controller
         }
     }
     function myJobs(){
-        $result['data']=Jobs::all();
+        $result['data']=Jobs::all()->where('guard_id',session('GUARD_ID'));
         $result['data'];
         return view('guard.myJobs', $result);
 
@@ -99,70 +99,5 @@ class JobsController extends Controller
         $myjob->save();
         $sign_out_image->storeAS('/public/media',$file);
         return redirect('guard/myJobs');
-    }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Jobs  $jobs
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Jobs $jobs)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Jobs  $jobs
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Jobs $jobs)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Jobs  $jobs
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Jobs $jobs)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Jobs  $jobs
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Jobs $jobs)
-    {
-        //
     }
 }

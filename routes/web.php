@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\JobsController;
 use App\Http\Controllers\RequirementController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\MailController;
 use Illuminate\Support\Facades\Route;
 
@@ -44,7 +46,14 @@ Route::group(['middleware'=>'admin_auth'], function(){
  Route::get('admin/newjobs/approve/{status}/{id}', [RequirementController::class, 'approve']);
  Route::get('admin/newjobs/broadcast/{id}', [RequirementController::class, 'broadcast']);
 
-
+ //product management
+ Route::get('admin/product', [ProductController::class, 'index']);
+ Route::get('admin/product/manage_product', [ProductController::class, 'manage_product']);
+ Route::get('admin/product/manage_product/{id}', [ProductController::class, 'manage_product']);
+ Route::post('admin/product/manage_product_process', [ProductController::class, 'manage_product_process'])->name('coupon.manage_coupon_process');
+ Route::get('admin/product/delete/{id}', [ProductController::class, 'delete']);
+ Route::get('admin/product/status/{status}/{id}', [ProductController::class, 'status']);
+ 
     // Route::get('admin/updatepassword', [AdminController::class, 'updatepassword']);
     Route::get('admin/logout', function(){
         session()->forget('ADMIN_LOGIN');
@@ -77,5 +86,27 @@ Route::post('/guard/attendance/signout/{jobid}', [JobsController::class, 'signou
         session()->forget('GUARD_ID');
         session()->flash('error','Logout Successfully');
     return redirect('guard');
+    });
+});
+//client panel
+
+Route::get('client', [ClientController::class, 'client']);
+Route::post('client/auth', [ClientController::class, 'client_auth'])->name('client.client_auth');
+Route::group(['middleware'=>'client_auth'], function(){
+// Route::get('client/dashboard', [UsersController::class, 'client_dashboard']);
+Route::get('/client/jobs', [ClientController::class, 'clientJobs']);
+Route::get('/client/job/manage_job', [ClientController::class, 'job_manage']);
+Route::get('/client/job/manage_job/{id}', [ClientController::class, 'manage_job']);
+Route::post('/client/job/manage_job_process', [ClientController::class, 'manage_job_process'])->name('client.manage_job_process');
+
+ 
+   
+ 
+    // Route::get('admin/updatepassword', [AdminController::class, 'updatepassword']);
+    Route::get('client/logout', function(){
+        session()->forget('CLIENT_LOGIN');
+        session()->forget('CLIENT_ID');
+        session()->flash('error','Logout Successfully');
+    return redirect('client');
     });
 });
