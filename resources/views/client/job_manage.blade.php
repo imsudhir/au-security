@@ -25,7 +25,7 @@
                    
                     <div class="form-group has-success">
                         <label for="requirement" class="control-label mb-1">Requirement</label>
-                        <input id="requirement" value="{{$requirement}}" name="category_slug" type="text" 
+                        <input id="requirement" value="{{$requirement}}" name="requirement" type="text" 
                         class="form-control cc-name valid" data-val="true" data-val-required="Please enter number of guard"
                             autocomplete="requirement" >
                             @error('requirement')
@@ -36,7 +36,7 @@
                     </div>
                     <div class="form-group">
                         <label for="in_time" class="control-label mb-1">In Time</label>
-                        <input id="in_time" value="{{$in_time}}" name="in_time" type="text" class="form-control"  aria-invalid="false" >
+                        <input id="in_time" value="{{$in_time}}" name="in_time" type="date" class="form-control"  aria-invalid="false" >
                         @error('in_time')
                             <span class="text-danger" role="alert">
                                 {{$message}}
@@ -46,7 +46,7 @@
                     </div>
                     <div class="form-group">
                         <label for="out_time" class="control-label mb-1">Out Time</label>
-                        <input id="out_time" value="{{$out_time}}" name="out_time" type="text" class="form-control"  aria-invalid="false" >
+                        <input id="out_time" value="{{$out_time}}" name="out_time" type="date" class="form-control"  aria-invalid="false" >
                         @error('out_time')
                             <span class="text-danger" role="alert">
                                 {{$message}}

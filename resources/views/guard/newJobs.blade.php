@@ -44,7 +44,7 @@
                     <td>{{$list->client_name}}</td>
                     <td>{{$list->requirement_accepted}}</td>
                     <td>{{$list->requirement}}</td>
-                    <td>{{$list->requirement_date}}</td>
+                    <td>{{$list->created_at}}</td>
                     <td>{{$list->in_time}}</td>
                     <td>{{$list->out_time}}</td>
                     <td>{{$list->location_address}}</td>

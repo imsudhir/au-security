@@ -95,6 +95,7 @@ function job_manage(Request $request,$id=''){
 public function manage_job_process(Request $request)
 {
     //
+    // return $request->requirement;
     $request->validate([
         'requirement'=>'required',
         'in_time'=>'required',
@@ -103,21 +104,30 @@ public function manage_job_process(Request $request)
         'city'=>'required',
         'pincode'=>'required',
         ]);
-    if($request->post('id')>0){
-        $model=new coupon();
-        $model=Coupon::find($request->post('id'));
-        $msg="Coupon Updated Successfuly";
+    if(($request->id)>0){
+        $model=new Requirement();
+        $model=Requirement::find($request->post('id'));
+        $msg="Requirement Updated Successfuly";
     }else{
-    $model=new coupon();
-    $msg="Coupon Added Successfuly";
+     $model=new Requirement();
+    $msg="Requirement Added Successfuly";
 
     }
-    $model->title=$request->post('title');
-    $model->code=$request->post('code');
-    $model->value=$request->post('value');
-    $model->status=1;
+
+    $model->client_name=session('CLIENT_NAME');
+    $model->client_id=session('CLIENT_ID');
+    $model->requirement=$request->post('requirement');
+    $model->location_address=$request->post('location_address');
+    $model->city=$request->post('city');
+    $model->pincode=$request->post('pincode');
+    $model->in_time=$request->post('in_time');
+    $model->out_time=$request->post('out_time');
+    $model->requirement_accepted=0;
+    $model->status='processiong';
+    $model->approve=0;
+
     $model->save();
     $request->session()->flash('message',$msg);
-    return redirect('admin/coupon');
+    return redirect('client/jobs');
 }
 }
