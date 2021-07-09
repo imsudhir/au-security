@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 06, 2021 at 10:03 PM
+-- Generation Time: Jul 09, 2021 at 05:01 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.3.28
 
@@ -101,7 +101,9 @@ INSERT INTO `jobs` (`id`, `req_id`, `date`, `client_name`, `location_address`, `
 (27, 1, NULL, 'abc', 'address address test abc test abc abc address test abc', 'sydney', '98986', 3, '2021-04-29 04:07:02', '2021-04-19 12:07:13', NULL, NULL, 0, 1, '2021-06-27 13:08:03', '2021-06-27 13:08:03'),
 (28, 4, NULL, 'mno', 'location2address', 'sydney', '98986', 3, '2021-04-27 04:07:48', '2021-04-27 17:07:55', NULL, NULL, 0, 1, '2021-06-27 13:10:25', '2021-06-27 13:10:25'),
 (29, 1, NULL, 'abc', 'address address test abc test abc abc address test abc', 'sydney', '98986', 3, '2021-04-29 04:07:02', '2021-04-19 12:07:13', NULL, NULL, 0, 1, '2021-06-27 13:36:34', '2021-06-27 13:36:34'),
-(30, 4, NULL, 'mno', 'location2address', 'sydney', '98986', 3, '2021-04-27 04:07:48', '2021-04-27 17:07:55', NULL, NULL, 0, 1, '2021-06-27 13:42:10', '2021-06-27 13:42:10');
+(30, 4, NULL, 'mno', 'location2address', 'sydney', '98986', 3, '2021-04-27 04:07:48', '2021-04-27 17:07:55', NULL, NULL, 0, 1, '2021-06-27 13:42:10', '2021-06-27 13:42:10'),
+(31, 6, NULL, 'client', 'location', 'noida', '899898', 3, '2021-07-15 18:30:00', '2021-07-16 18:30:00', NULL, NULL, 0, 1, '2021-07-08 21:25:39', '2021-07-08 21:25:39'),
+(32, 8, NULL, 'client', 'address', 'lucknow', '22660', 3, '2021-07-09 18:30:00', '2021-07-15 18:30:00', NULL, NULL, 0, 1, '2021-07-08 21:26:18', '2021-07-08 21:26:18');
 
 -- --------------------------------------------------------
 
@@ -167,15 +169,15 @@ CREATE TABLE `requirements` (
   `client_id` int(11) NOT NULL,
   `requirement` int(11) NOT NULL,
   `requirement_accepted` int(11) NOT NULL,
-  `requirement_date` datetime NOT NULL,
   `in_time` datetime DEFAULT NULL,
   `out_time` datetime DEFAULT NULL,
   `location_address` varchar(255) NOT NULL,
   `city` varchar(255) NOT NULL,
   `pincode` varchar(255) NOT NULL,
   `approve` int(11) NOT NULL,
-  `accepted_by` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`accepted_by`)),
+  `accepted_by` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT '[]',
   `status` varchar(255) NOT NULL DEFAULT 'processing',
+  `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -183,12 +185,15 @@ CREATE TABLE `requirements` (
 -- Dumping data for table `requirements`
 --
 
-INSERT INTO `requirements` (`id`, `client_name`, `client_id`, `requirement`, `requirement_accepted`, `requirement_date`, `in_time`, `out_time`, `location_address`, `city`, `pincode`, `approve`, `accepted_by`, `status`, `updated_at`) VALUES
-(1, 'abc', 2, 12, 2, '2021-04-24 08:28:15', '2021-04-29 09:37:02', '2021-04-19 17:37:13', 'address address test abc test abc abc address test abc', 'sydney', '98986', 0, '[2]', 'processing', '2021-06-30 12:03:21'),
-(2, 'xyz', 4, 23, 1, '2021-04-24 08:28:15', '2021-04-27 09:37:48', '2021-04-27 22:37:55', 'location2address', 'sydney', '98986', 1, '[2]', 'processing', '2021-06-27 13:39:07'),
-(3, 'cde', 4, 15, 1, '2021-04-24 08:28:15', '2021-04-27 09:37:48', '2021-04-27 22:37:55', 'location2address', 'sydney', '98986', 1, '[2,1]', 'processing', '2021-06-27 12:55:47'),
-(4, 'mno', 4, 7, 7, '2021-04-24 08:28:15', '2021-04-27 09:37:48', '2021-04-27 22:37:55', 'location2address', 'sydney', '98986', 1, '[2,3]', 'processing', '2021-06-27 13:42:10'),
-(5, 'opq', 4, 10, 10, '2021-04-24 08:28:15', '2021-04-27 09:37:48', '2021-04-27 22:37:55', 'location2address', 'sydney', '98986', 1, '[2]', 'processing', '2021-06-27 13:38:51');
+INSERT INTO `requirements` (`id`, `client_name`, `client_id`, `requirement`, `requirement_accepted`, `in_time`, `out_time`, `location_address`, `city`, `pincode`, `approve`, `accepted_by`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'abc', 2, 12, 2, '2021-04-29 09:37:02', '2021-04-19 17:37:13', 'address address test abc test abc abc address test abc', 'sydney', '98986', 0, '[2]', 'processing', '2021-06-30 12:03:21', '2021-06-30 12:03:21'),
+(2, 'xyz', 4, 23, 1, '2021-04-27 09:37:48', '2021-04-27 22:37:55', 'location2address', 'sydney', '98986', 1, '[2]', 'processing', '2021-06-27 13:39:07', '2021-06-27 13:39:07'),
+(3, 'cde', 4, 15, 1, '2021-04-27 09:37:48', '2021-04-27 22:37:55', 'location2address', 'sydney', '98986', 1, '[2,1]', 'processing', '2021-07-09 02:32:57', '2021-06-27 12:55:47'),
+(4, 'mno', 4, 7, 7, '2021-04-27 09:37:48', '2021-04-27 22:37:55', 'location2address', 'sydney', '98986', 1, '[2,3]', 'processing', '2021-06-27 13:42:10', '2021-06-27 13:42:10'),
+(5, 'opq', 4, 10, 10, '2021-04-27 09:37:48', '2021-04-27 22:37:55', 'location2address', 'sydney', '98986', 1, '[2]', 'processing', '2021-06-27 13:38:51', '2021-06-27 13:38:51'),
+(6, 'client', 4, 8, 1, '2021-07-16 00:00:00', '2021-07-17 00:00:00', 'location', 'noida', '899898', 1, '[3]', '1', '2021-07-08 21:05:41', '2021-07-08 21:25:39'),
+(7, 'client', 4, 10, 0, '2021-07-09 00:00:00', '2021-07-16 00:00:00', 'delhi cant', 'delhi', '110076', 1, '[]', 'processiong', '2021-07-08 21:14:28', '2021-07-08 21:15:31'),
+(8, 'client', 4, 9, 1, '2021-07-10 00:00:00', '2021-07-16 00:00:00', 'address', 'lucknow', '22660', 1, '[3]', 'processiong', '2021-07-08 21:23:40', '2021-07-08 21:26:18');
 
 -- --------------------------------------------------------
 
@@ -284,7 +289,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `jobs`
 --
 ALTER TABLE `jobs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -302,7 +307,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `requirements`
 --
 ALTER TABLE `requirements`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `users`
