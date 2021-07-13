@@ -23,6 +23,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/career', [UsersController::class, 'guard_application_form']);
+Route::post('/career/guard_application_form_process', [UsersController::class, 'guard_application_form_process'])->name('guard_application_form_process');
 
 Route::get('admin', [AdminController::class, 'index']);
 Route::post('admin/auth', [AdminController::class, 'auth'])->name('admin.auth');
@@ -63,8 +65,9 @@ Route::group(['middleware'=>'admin_auth'], function(){
     return redirect('admin');
     });
 });
+//end of admin panel
 
-//guard panel
+//start of guard panel
 
 Route::get('guard', [UsersController::class, 'guard']);
 Route::post('guard/auth', [UsersController::class, 'auth'])->name('guard.auth');
@@ -88,8 +91,9 @@ Route::post('/guard/attendance/signout/{jobid}', [JobsController::class, 'signou
     return redirect('guard');
     });
 });
-//client panel
+//end of client panel
 
+//start of client panel
 Route::get('client', [ClientController::class, 'client']);
 Route::post('client/auth', [ClientController::class, 'client_auth'])->name('client.client_auth');
 Route::group(['middleware'=>'client_auth'], function(){
@@ -98,10 +102,8 @@ Route::get('/client/jobs', [ClientController::class, 'clientJobs']);
 Route::get('/client/job/manage_job', [ClientController::class, 'job_manage']);
 Route::get('/client/job/manage_job/{id}', [ClientController::class, 'manage_job']);
 Route::post('/client/job/manage_job_process', [ClientController::class, 'manage_job_process'])->name('client.manage_job_process');
+Route::post('/client/job/update_job_status', [ClientController::class, 'update_job_status'])->name('client.update_job_status');
 
- 
-   
- 
     // Route::get('admin/updatepassword', [AdminController::class, 'updatepassword']);
     Route::get('client/logout', function(){
         session()->forget('CLIENT_LOGIN');

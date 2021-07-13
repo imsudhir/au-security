@@ -19,7 +19,6 @@ class UsersController extends Controller
     {
         // $result['data']=Users::all();
         $result['data']=Users::all()->where('role',2);
-        $result['userRole']=2;
         return view('admin.guard', $result);
     }
     public function newjobs()
@@ -51,6 +50,7 @@ class UsersController extends Controller
             if(Hash::check($request->post('login_password'), $result->login_password)){
             $request->session()->put('GUARD_LOGIN',true); 
             $request->session()->put('GUARD_ID',$result->id);
+            $request->session()->put('GUARD_NAME',$result->f_name.' '.$result->l_name);
             return redirect ('guard/dashboard');
         }else{
             $request->session()->flash('error','Please enter correct user details..');
@@ -124,6 +124,50 @@ class UsersController extends Controller
         return redirect('admin/guard');
         
     }
+
+    function guard_application_form(Request $request){
+
+   
+        return view('guard_application_form');
+    }
+    
+
+    public function guard_application_form_process(Request $request)
+{
+    
+    // return $request;
+    
+    $request->validate([
+        'f_name'=>'required',
+        'l_name'=>'required',
+        'email'=>'required',
+        'mobile'=>'required',
+        'address'=>'required',
+        'state'=>'required',
+        'city'=>'required',
+        'pincode'=>'required',
+        'file'=>'required',
+        ]);
+    $model = new Users();
+    $msg = "Application Form Submitted Successfuly";
+    $resume=$request->file('file');
+    $extn=$resume->extension();
+    $file=time().'.'.$extn;
+    $model->f_name=$request->post('f_name');
+    $model->l_name=$request->post('l_name');
+    $model->email=$request->post('email');
+    $model->mobile=$request->post('mobile');
+    $model->position=$request->post('position');
+    $model->address=$request->post('address');
+    $model->state=$request->post('state');
+    $model->city=$request->post('city');
+    $model->pincode=$request->post('pincode');
+    $model->resume=$file;
+    $resume->storeAS('/public/media',$file);
+    $model->save();
+    $request->session()->flash('message',$msg);
+    return redirect('/career');
+}
     /**
      * Show the form for creating a new resource.
      *

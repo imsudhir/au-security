@@ -9,36 +9,44 @@
 
     <!-- Title Page-->
     <title>@yield('page_title')</title>
+    <link href="{{asset('admin_assets/css/font-face.css')}}" rel="stylesheet" media="all">
+    <link href="{{asset('admin_assets/vendor/font-awesome-4.7/css/font-awesome.min.css')}}" rel="stylesheet" media="all">
+    <link href="{{asset('admin_assets/vendor/font-awesome-5/css/fontawesome-all.min.css')}}" rel="stylesheet" media="all">
+    <link href="{{asset('admin_assets/vendor/mdi-font/css/material-design-iconic-font.min.css')}}" rel="stylesheet" media="all">
+    <link href="{{asset('admin_assets/vendor/bootstrap-4.1/bootstrap.min.css')}}" rel="stylesheet" media="all">
+    <link href="{{asset('admin_assets/css/theme.css')}}" rel="stylesheet" media="all">
 <style>
-/* .card {
-  background: #222;
-  border: 1px solid #dd2476;
-  color: rgba(250, 250, 250, 0.8);
-  margin-bottom: 2rem;
-}
-
-.btn {
-  border: 5px solid;
-  border-image-slice: 1;
-  background: var(--gradient) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  border-image-source:  var(--gradient) !important; 
-  text-decoration: none;
-  transition: all .4s ease;
-}
-
-.btn:hover, .btn:focus {
-      background: var(--gradient) !important;
-  -webkit-background-clip: none !important;
-  -webkit-text-fill-color: black !important;
-  border: 5px solid #fff !important; 
-  box-shadow: #222 1px 0 10px;
-  text-decoration: underline;
-} */
-/* #sign_upload{
-    display:none;
-} */
+  #example_wrapper{
+    overflow-x: scroll !important;
+    width: -webkit-fill-available !important;
+    }
+    .card {
+        /* overflow-x: scroll !important; */
+    }
+  table {
+            border-spacing: 0px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+  
+        
+  
+        td {
+            border: 1px solid black;
+            word-break: break-all;
+        }
+        li>a{
+            text-align: left;
+            padding-left: 20px !important;
+        }
+        .active{
+        background: whitesmoke;
+        border-radius: 30px;
+        }
+        .active>a, li>a{
+            text-decoration:none !important;
+            padding-left: 20px !important;
+        }
 </style>
     <!-- Fontfaces CSS-->
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"> --}}
@@ -63,11 +71,7 @@
     <!-- Vendor CSS-->
    
     <!-- Main CSS-->
-    <script>
-        $(document).ready( function () {
-        $('#table_id').DataTable();
-    } );
-    </script>
+   
 </head> 
 
 <body>
@@ -234,7 +238,7 @@
                                     <div class="account-item clearfix js-item-menu">
                                         
                                         <div class="content">
-                                            <a class="js-acc-btn" href="#">Welcome Guard</a>
+                                            <a class="js-acc-btn" href="#">Welcome {{session('GUARD_NAME')}}</a>
                                         </div>
                                         <div class="account-dropdown js-dropdown">
                                         
@@ -289,29 +293,44 @@
 
     </div>
    
-    <!-- Jquery JS-->
-    <script src="{{asset('admin_assets/vendor/jquery-3.2.1.min.js')}}"></script>
+   
+   <!-- Jquery JS-->
+   <script src="{{asset('admin_assets/vendor/jquery-3.2.1.min.js')}}"></script>
     <!-- Bootstrap JS-->
     <script src="{{asset('admin_assets/vendor/bootstrap-4.1/popper.min.js')}}"></script>
     <script src="{{asset('admin_assets/vendor/bootstrap-4.1/bootstrap.min.js')}}"></script>
     <!-- Vendor JS       -->
     <script src="{{asset('admin_assets/vendor/wow/wow.min.js')}}"></script>
-
+ 
 <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 <script
     src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
 
-<link rel="stylesheet"
-    href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<link rel="stylesheet"
-    href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css">
-    
+    <link rel="stylesheet"
+        href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<!-- <link rel="stylesheet"
+    href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css"> -->
+
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css"> -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css">
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+<!-- <script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.colVis.min.js"></script> -->
+ 
     <script>
-        jQuery(document).ready(function() {
-          jQuery('#table').DataTable();
-      } );
-     </script>
+      $(document).ready(function() {
+    $('#example').DataTable({
+        responsive: true,
+    });
+} );
+       </script>
 <script src="{{asset('admin_assets/js/main.js')}}"></script>
+
 
 </body>
 

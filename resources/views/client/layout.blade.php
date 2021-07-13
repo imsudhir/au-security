@@ -193,7 +193,7 @@
                             <a  href="{{url('client/jobs')}}">
                             <i class="fas fa-list" aria-hidden="true"></i>Job List</a>
                         </li>
-                        <li class="@yield('product_selected')">
+                        <li class="@yield('managejob_selected')">
                             <a  href="{{url('client/job/manage_job')}}">
                             <i class="fas fa-plus"></i>Add Job</a>
                         </li>
@@ -276,14 +276,14 @@
 
     </div>
    
-    <!-- Jquery JS-->
+   <!-- Jquery JS-->
     <script src="{{asset('admin_assets/vendor/jquery-3.2.1.min.js')}}"></script>
     <!-- Bootstrap JS-->
     <script src="{{asset('admin_assets/vendor/bootstrap-4.1/popper.min.js')}}"></script>
     <script src="{{asset('admin_assets/vendor/bootstrap-4.1/bootstrap.min.js')}}"></script>
     <!-- Vendor JS       -->
     <script src="{{asset('admin_assets/vendor/wow/wow.min.js')}}"></script>
-
+ 
 <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 <script
     src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>

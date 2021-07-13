@@ -26,7 +26,7 @@
                     <th widt h="30%" class="text-center">Address</th>
                     <th widt h="30%" class="text-center">City</th>
                     <th widt h="30%" class="text-center">Pincode</th>
-                    <th widt h="40%" class="text-center">Action</th>
+                    <!-- <th widt h="40%" class="text-center">Action</th> -->
                 </tr>
             </thead>
             <tbody>
@@ -40,22 +40,22 @@
                     <td>{{$list->location_address}}</td>
                     <td>{{$list->city}}</td>
                     <td>{{$list->pincode}}</td>
-                    <td>
+                    <!-- <td>
                         <div class="btn-group" role="group" aria-label="Basic example">
                       
                            @if ($list->approve == 1)
-                           <a class="btn btn-primary" href="{{url('admin/newjobs/approve/0')}}/{{$list->id}}">
+                           <a class="btn btn-primary">
                              Approved    
                            </a>
                           
                            @elseif($list->approve == 0)
-                           <a class="btn btn-warning" href="{{url('admin/newjobs/approve/1')}}/{{$list->id}}">
+                           <a class="btn btn-warning">
                           Not Approved     
                            </a>
                            @endif
                           
                       </div>
-                    </td>
+                    </td> -->
                  
                 </tr>
                 @endforeach

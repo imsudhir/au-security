@@ -45,7 +45,7 @@ class ClientController extends Controller
             if(Hash::check($request->post('login_password'), $result->login_password)){
             $request->session()->put('CLIENT_LOGIN',true); 
             $request->session()->put('CLIENT_ID',$result->id);
-            $request->session()->put('CLIENT_NAME',$result->name);
+            $request->session()->put('CLIENT_NAME',$result->f_name.' '.$result->l_name);
             return redirect ('client/jobs');
         }else{
             $request->session()->flash('error','Please enter correct user details..');
@@ -60,7 +60,8 @@ class ClientController extends Controller
 
  // start client panel
  function clientJobs(){
-    $result['data']=Requirement::all()->where('client_id',session('CLIENT_ID'));
+    $result['data']=Requirement::orderBy('id', 'desc')
+    ->where('client_id',session('CLIENT_ID'))->get();
     return view('client.myJobs', $result);
 
 }
@@ -123,11 +124,25 @@ public function manage_job_process(Request $request)
     $model->in_time=$request->post('in_time');
     $model->out_time=$request->post('out_time');
     $model->requirement_accepted=0;
-    $model->status='processiong';
+    $model->status='pending';
     $model->approve=0;
-
     $model->save();
     $request->session()->flash('message',$msg);
     return redirect('client/jobs');
 }
+
+public function update_job_status(Request $request)
+{
+    //
+        $model=new Requirement();
+        $model=Requirement::find($request->post('jobid'));
+        $msg="Status Updated Successfuly";
+
+    $model->status = $request->post('status');
+    $model->save();
+    $request->session()->flash('message',$msg);
+    return redirect('admin/newjobs');
+}
+
+
 }

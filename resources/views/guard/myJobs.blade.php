@@ -15,7 +15,7 @@
             @endif
             
         </div>
-        <table class="table" id="table">
+        <table id="example" class="display responsive nowrap" style="width:100%">
             <thead>
                 <tr>
                     <th width="2%">Id</th>
@@ -24,6 +24,8 @@
                     <th width="2%" class="te xt-right">In time </th>
                     <th width="2%" class="te xt-right">Out time</th>
                     <th width="30%" class="te xt-right">Address</th>
+                    <th width="30%" class="te xt-right">City</th>
+                    <th width="30%" class="te xt-right">Pincode</th>
                     <th width="40%" class="te xt-right">Action</th>
                 </tr>
             </thead>
@@ -36,6 +38,8 @@
                     <td>{{$list->in_time}}</td>
                     <td>{{$list->out_time}}</td>
                     <td>{{$list->location_address}}</td>
+                    <td>{{$list->city}}</td>
+                    <td>{{$list->pincode}}</td>
                     <td>
                         <div class="btn-group" role="group" aria-label="Basic example">
                          {{-- <a class="btn btn-primary" href="{{url('admin/guard/view_details')}}/{{$list->id}}">

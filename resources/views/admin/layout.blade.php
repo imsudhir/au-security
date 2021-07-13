@@ -59,6 +59,9 @@
             text-decoration:none !important;
             padding-left: 20px !important;
         }
+        select.form-control:not([size]):not([multiple]) {
+            height: calc(3.25rem + 2px);
+        }
     </style>
 </head> 
 

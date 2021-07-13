@@ -22,7 +22,7 @@ class RequirementController extends Controller
     public function index()
     {
         //
-        $result['data']=Requirement::all();
+        $result['data']=Requirement::orderBy('id', 'desc')->get();
           $result['data'];
         return view('admin.requirement', $result);
     }

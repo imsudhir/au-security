@@ -22,16 +22,18 @@
             
             
         </div>
-        <table class="table" id="table">
+        <table id="example" class="display responsive nowrap" style="width:100%">
             <thead>
                 <tr>
-                    <th width="2%">Id</th>
-                    <th width="10%">Client Name</th>
-                    <th width="8%" class="text-center">Jobs</th>
-                    <th width="2%" class="text-center">Date</th>
-                    <th width="2%" class="text-center">In time </th>
-                    <th width="2%" class="text-center">Out time</th>
-                    <th width="30%" class="text-center">Address</th>
+                    <th widt h="2%">Id</th>
+                    <th widt h="10%">Client Name</th>
+                    <th widt h="8%" class="text-center">No of Jobs</th>
+                    <th wid th="2%" class="text-center">In time </th>
+                    <th widt h="2%" class="text-center">Out time</th>
+                    <th w idth="30%" class="text-center">Address</th>
+                    <th wi dth="30%" class="text-center">City</th>
+                    <th wid th="30%" class="text-center">Pincode</th>
+                  
                     <th width="40%" class="text-center">Action</th>
                 </tr>
             </thead>
@@ -42,14 +44,13 @@
                  <tr>
                     <td>{{$list->id}}</td>
                     <td>{{$list->client_name}}</td>
-                    <td>{{$list->requirement_accepted}}</td>
                     <td>{{$list->requirement}}</td>
-                    <td>{{$list->created_at}}</td>
                     <td>{{$list->in_time}}</td>
                     <td>{{$list->out_time}}</td>
                     <td>{{$list->location_address}}</td>
+                    <td>{{$list->city}}</td>
+                    <td>{{$list->pincode}}</td>
                     <td class="text-center">
-                        
                         <div class="btn-group" role="group" aria-label="Basic example">
                            @if ($list->requirement_accepted == $list->requirement)
                            <a class="btn btn-warning" disabled >
@@ -58,7 +59,7 @@
                            @endif
                            @if ($list->requirement_accepted < $list->requirement)
                            <a class="btn btn-warning" href="{{url('guard/newjobs/accept/')}}/{{$list->id}}">
-                          Accept now     
+                          Accept now
                            </a>
                            @endif
                            <a class="btn btn-warning" href="{{url('guard/job-details')}}/{{$list->id}}">
