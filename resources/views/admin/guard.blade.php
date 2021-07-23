@@ -8,7 +8,7 @@
 
     <div class="col-lg-12">
         @if(session('message')!==null)
-            <div class="alert alert-success" role="alert">
+            <div class="alert alert-success text-success" role="alert">
                 {{ session('message') }}
             </div>
         @endif
@@ -41,7 +41,13 @@
                     <td>{{ $list->state}}</td>
                     <td>{{ $list->city}}</td>
                     <td>{{ $list->pincode }}</td>
-                    <td>{{ $list->resume }}<img width="100px" height="100px" class="mg-thumbnail" src="{{asset('storage/media/1625074218.jpg')}}"></td>
+                    <td>
+                        {{-- <a class="btn btn-primary" href="{{asset('storage/media/').$list->resume}}" download >download</button> --}}
+                           @if ($list->resume)
+                            <a class="btn btn-primary" href="{{url('storage/media').'/'.$list->resume}}" download >download</button>
+                           @endif
+                        {{-- <img width="100px" height="100px" class="mg-thumbnail" src="{{asset('storage/media/1625074218.jpg')}}"> --}}
+                    </td>
                     <td>{{$list->additional_information}}</td>
                   <td>
                     <div class="btn-group" role="group" aria-label="Basic example">

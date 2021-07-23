@@ -125,49 +125,7 @@ class UsersController extends Controller
         
     }
 
-    function guard_application_form(Request $request){
-
-   
-        return view('guard_application_form');
-    }
-    
-
-    public function guard_application_form_process(Request $request)
-{
-    
-    // return $request;
-    
-    $request->validate([
-        'f_name'=>'required',
-        'l_name'=>'required',
-        'email'=>'required',
-        'mobile'=>'required',
-        'address'=>'required',
-        'state'=>'required',
-        'city'=>'required',
-        'pincode'=>'required',
-        'file'=>'required',
-        ]);
-    $model = new Users();
-    $msg = "Application Form Submitted Successfuly";
-    $resume=$request->file('file');
-    $extn=$resume->extension();
-    $file=time().'.'.$extn;
-    $model->f_name=$request->post('f_name');
-    $model->l_name=$request->post('l_name');
-    $model->email=$request->post('email');
-    $model->mobile=$request->post('mobile');
-    $model->position=$request->post('position');
-    $model->address=$request->post('address');
-    $model->state=$request->post('state');
-    $model->city=$request->post('city');
-    $model->pincode=$request->post('pincode');
-    $model->resume=$file;
-    $resume->storeAS('/public/media',$file);
-    $model->save();
-    $request->session()->flash('message',$msg);
-    return redirect('/career');
-}
+ 
     /**
      * Show the form for creating a new resource.
      *

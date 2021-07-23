@@ -61,7 +61,7 @@
                       </div>
                     </td> -->
                  <td>
-                 <form action="{{ route('client.update_job_status') }}" method="post">
+                 <form action="{{ route('admin.update_job_status') }}" method="post">
                         @csrf
                     <div class="form-group form-control-lg">
                     <label for="sel1">Select:</label>

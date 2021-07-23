@@ -205,9 +205,14 @@
                         </li>
                         
             <!-- <hr style="color:black; border:1px solid;" /> -->
-            <li class="@yield('product_selected')">
+                     <li class="@yield('product_selected')">
                             <a  href="{{url('admin/product')}}">
                             <i class="fab fa-product-hunt" aria-hidden="true"></i>All Product</a>
+                        </li>
+                        </li>
+                        <li class="@yield('manage_product_selected')">
+                            <a  href="{{url('admin/product/manage_product')}}">
+                            <i class="fab fa-product-hunt" aria-hidden="true"></i>Add Product</a>
                         </li>
                         </li>
                     </ul>

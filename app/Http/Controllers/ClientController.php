@@ -74,6 +74,8 @@ function job_manage(Request $request,$id=''){
         $result['location_address']=$arr['0']->location_address;
         $result['city']=$arr['0']->city;
         $result['pincode']=$arr['0']->pincode;
+        $result['join_date']=$arr['0']->join_date;
+        $result['leave_date']=$arr['0']->leave_date;
         $result['in_time']=$arr['0']->in_time;
         $result['out_time']=$arr['0']->out_time;
         $result['id']=$id;
@@ -84,6 +86,8 @@ function job_manage(Request $request,$id=''){
        $result['location_address']='';
        $result['city']='';
        $result['pincode']='';
+       $result['join_date']='';
+       $result['leave_date']='';
        $result['in_time']='';
        $result['out_time']='';
        $result['id']='';
@@ -99,6 +103,8 @@ public function manage_job_process(Request $request)
     // return $request->requirement;
     $request->validate([
         'requirement'=>'required',
+        'join_date'=>'required',
+        'leave_date'=>'required',
         'in_time'=>'required',
         'out_time'=>'required',
         'location_address'=>'required',
@@ -121,6 +127,8 @@ public function manage_job_process(Request $request)
     $model->location_address=$request->post('location_address');
     $model->city=$request->post('city');
     $model->pincode=$request->post('pincode');
+    $model->join_date=$request->post('join_date');
+    $model->leave_date=$request->post('leave_date');
     $model->in_time=$request->post('in_time');
     $model->out_time=$request->post('out_time');
     $model->requirement_accepted=0;

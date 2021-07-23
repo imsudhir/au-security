@@ -21,6 +21,8 @@
                     <th widt h="5%">Id</th>
                     <th widt h="10%">Status</th>
                     <th widt h="8%" class="text-center">No. of jobs</th>
+                    <th widt h="5%" class="text-center">Join Date </th>
+                    <th widt h="5%" class="text-center">Leave Date </th>
                     <th widt h="5%" class="text-center">In time </th>
                     <th widt h="2%" class="text-center">Out time</th>
                     <th widt h="30%" class="text-center">Address</th>
@@ -35,6 +37,8 @@
                     <td>{{$list->id}}</td>
                     <td><span class="badge badge-primary">{{$list->status}}</span></td>
                     <td>{{$list->requirement}}</td>
+                    <td>{{$list->join_date}}</td>
+                    <td>{{$list->leave_date}}</td>
                     <td>{{$list->in_time}}</td>
                     <td>{{$list->out_time}}</td>
                     <td>{{$list->location_address}}</td>

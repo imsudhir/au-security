@@ -71,6 +71,18 @@ class AdminController extends Controller
     {
         return view('admin.dashboard');
     }
+    public function update_job_status(Request $request)
+{
+    //
+        $model=new Requirement();
+        $model=Requirement::find($request->post('jobid'));
+        $msg="Status Updated Successfuly";
+
+    $model->status = $request->post('status');
+    $model->save();
+    $request->session()->flash('message',$msg);
+    return redirect('admin/newjobs');
+}
     //update password with hashing to database
     // public function updatepassword()
     // {

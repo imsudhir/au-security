@@ -21,6 +21,8 @@
                     <th width="2%">Id</th>
                     <th width="10%">Client Name</th>
                     <th width="2%" class="te xt-right">Date</th>
+                    <th width="2%" class="te xt-right">Join date</th>
+                    <th width="2%" class="te xt-right">Releave Date</th>
                     <th width="2%" class="te xt-right">In time </th>
                     <th width="2%" class="te xt-right">Out time</th>
                     <th width="30%" class="te xt-right">Address</th>
@@ -35,6 +37,8 @@
                     <td>{{$list->id}}</td>
                     <td>{{$list->client_name}}</td>
                     <td>{{$list->date}}</td>
+                    <td>{{$list->join_date}}</td>
+                    <td>{{$list->releavedate}}</td>
                     <td>{{$list->in_time}}</td>
                     <td>{{$list->out_time}}</td>
                     <td>{{$list->location_address}}</td>
@@ -57,7 +61,7 @@
                            <a class="btn btn-primary" href="{{url('guard/job-details')}}/{{$list->id}}">
                             View details     
                              </a>
-                             <a class="btn btn-success" href="{{url('guard/attendance')}}/{{$list->id}}">
+                             <a class="btn btn-success" href="{{url('guard/attendance_management')}}/{{$list->id}}">
                             Attendence     
                              </a>
                       </div>

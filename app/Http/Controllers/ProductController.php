@@ -22,7 +22,7 @@ class ProductController extends Controller
         return view('admin.products', $result);
     }
 public function manage_product(){
-    return "manage_product";
+    return view('admin.manage_product');
 }
   /**
      * Display a listing of the resource.

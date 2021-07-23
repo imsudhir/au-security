@@ -4,7 +4,7 @@
 @section('container')
 
 <div class="row card card-body pt-2 pr-5 pb-5 pl-5">
-    <h2 class="mb-2">Manage Jobs</h2>
+    <h2 class="mb-2">Add Job</h2>
     <hr style="border-bottom:5px solid black;">
     <div class="col-lg-12">
         @if(session('message')!==null)
@@ -14,7 +14,6 @@
         @endif
 
     </div>
-    <a href="{{ url('client/jobs') }}" class="btn btn-md btn-info mb-3">Back</a>
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
@@ -32,8 +31,37 @@
                                 </span>
                             @enderror
                         </div>
-                        <label for="in_time" style="text-align:center" class="control-label mb-1">Date and Time</label>
+                        <label for="in_time" style="text-align:center" class="control-label mb-1">Contract period</label>
                         <hr>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="join_date" class="control-label mb-1">Joining Date</label>
+                                    <input id="join_date" value="{{ $join_date }}" name="join_date" type="date"
+                                        class="form-control" aria-invalid="false">
+                                    @error('join_date')
+                                        <span class="text-danger" role="alert">
+                                            {{ $message }}
+                                        </span>
+                                    @enderror
+
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="leave_date" class="control-label mb-1">Last date</label>
+                                    <input id="leave_date" value="{{ $leave_date }}" name="leave_date" type="date"
+                                        class="form-control" aria-invalid="false">
+                                    @error('leave_date')
+                                        <span class="text-danger" role="alert">
+                                            {{ $message }}
+                                        </span>
+                                    @enderror
+
+                                </div>
+
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
@@ -63,6 +91,7 @@
 
                             </div>
                         </div>
+                       
 
 
                         <div class="form-group">
