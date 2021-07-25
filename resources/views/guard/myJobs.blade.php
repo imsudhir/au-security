@@ -13,7 +13,16 @@
                 {{session('message')}}
             </div>
             @endif
-            
+            @if(session('signinmessage')!==null)
+            <div class="alert alert-success" role="alert">
+                {{session('signinmessage')}}
+            </div>
+            @endif
+            @if(session('signoutmessage')!==null)
+            <div class="alert alert-success" role="alert">
+                {{session('signoutmessage')}}
+            </div>
+            @endif
         </div>
         <table id="example" class="display responsive nowrap" style="width:100%">
             <thead>

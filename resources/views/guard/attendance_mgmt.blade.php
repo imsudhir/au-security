@@ -43,13 +43,18 @@
                     <button type="submit" id="signin_upload" href="#" class="btn btn-primary btn-lg">sign in </button>  
 
                 </form>
+                @if(session('signinmessage')!==null)
+            <div class="alert alert-success" role="alert">
+                {{session('signinmessage')}}
+            </div>
+            @endif
             </div>
             </div>
 
     <div class="col-lg-6 col-md-6 pt- 2 pr- 5 pb- 5 pl- 5">
     <div class="card card-body">
                         
-                <form id="demo-form2" action="{{url('/guard/attendance_management/signout')}}/{{$attendanceid}}" enctype="multipart/form-data" method="post" data-parsley-validate class="form-horizontal form-label-left">
+                <form id="demo-form2" action="{{url('/guard/attendance_management/signout')}}/{{$jobid}}" enctype="multipart/form-data" method="post" data-parsley-validate class="form-horizontal form-label-left">
                     @csrf
                     <div class="item form-group">
                     <div class="col-md-9 col-sm-9 ">
@@ -67,7 +72,11 @@
                     <button type="submit" id="signout_upload" href="#" class="btn btn-primary btn-lg">sign out </button>  
 
                 </form>
-
+                @if(session('signoutmessage')!==null)
+                <div class="alert alert-success" role="alert">
+                    {{session('signoutmessage')}}
+                </div>
+                @endif
             </div>
             </div>
 

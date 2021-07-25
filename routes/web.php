@@ -86,6 +86,7 @@ Route::post('/guard/attendance/signin/{jobid}', [JobsController::class, 'signin'
 Route::post('/guard/attendance/signout/{jobid}', [JobsController::class, 'signout']);
 
 Route::get('guard/attendance_management/{id}', [AttendanceController::class, 'attendance_mgmt']);
+Route::get('guard/attendance_management', [AttendanceController::class, 'attendance_mgmt']);
 Route::post('/guard/attendance_management/signin/{jobid}', [AttendanceController::class, 'signin']);
 Route::post('/guard/attendance_management/signout/{jobid}', [AttendanceController::class, 'signout']);
  
