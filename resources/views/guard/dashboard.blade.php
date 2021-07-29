@@ -15,7 +15,7 @@
                             <i class="fa fa-user-secret"></i>
                             <h2 style="fon t-size: 18px !important">Completed Jobs </h2>
                             <h2> 
-                                0
+                                n/a
                             </h2>
                         </div>
                     </div>
@@ -33,7 +33,7 @@
                             <i class="zmdi zmdi-account-o"></i>
                             <h2 style="fon t-size: 18px !important">New Jobs</h2>
                             <h2>   
-                                2
+                                n/a
                             </h2>
                         </div>
                     </div>

@@ -25,8 +25,23 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('', [LandingpageController::class, 'Landingpage']);
+Route::get('/', [LandingpageController::class, 'Landingpage']);
 
+Route::get('/about', [LandingpageController::class, 'about']);
+Route::get('/asset-security', [LandingpageController::class, 'asset_security']);
+Route::get('/cctv-cameras-installations', [LandingpageController::class, 'cctv_cameras_installations']);
+Route::get('/construction-sites', [LandingpageController::class, 'construction_sites']);
+Route::get('/corporate-security', [LandingpageController::class, 'corporate_security']);
+Route::get('/crowd-control-and-private-event-security', [LandingpageController::class, 'crowd_control_and_private_event_security']);
+Route::get('/guards', [LandingpageController::class, 'guards']);
+Route::get('/guard-hireing-and-recruitment', [LandingpageController::class, 'guard_hireing_and_recruitment']);
+Route::get('/mobile-patrol-alar-response', [LandingpageController::class, 'mobile_patrol_alar_response']);
+Route::get('/residential-building-concierge', [LandingpageController::class, 'residential_building_concierge']);
+Route::get('/retail-security', [LandingpageController::class, 'retail_security']);
+Route::get('/rsl-lagues-bowling-clubs-and-pubs', [LandingpageController::class, 'rsl_lagues_bowling_clubs_and_pubs']);
+Route::get('/shopping-malls', [LandingpageController::class, 'shopping_malls']);
+Route::get('/special-duties', [LandingpageController::class, 'special_duties']);
+Route::get('/contact', [LandingpageController::class, 'contact']);
 Route::get('/career', [LandingpageController::class, 'guard_application_form']);
 Route::post('/career/guard_application_form_process', [LandingpageController::class, 'guard_application_form_process'])->name('frontend.guard_application_form_process');
 
