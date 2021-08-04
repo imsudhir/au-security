@@ -25,6 +25,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/cleareverything', function () {
+    $clearcache = Artisan::call('guard:availability');
+    echo "availabilty checked <br>";
+ 
+});
 Route::get('/', [LandingpageController::class, 'Landingpage']);
 
 Route::get('/about', [LandingpageController::class, 'about']);
@@ -66,6 +71,7 @@ Route::group(['middleware'=>'admin_auth'], function(){
  Route::get('admin/newjobs', [RequirementController::class, 'index']);
  Route::get('admin/newjobs/approve/{status}/{id}', [RequirementController::class, 'approve']);
  Route::get('admin/newjobs/broadcast/{id}', [RequirementController::class, 'broadcast']);
+ Route::post('/admin/job/update_job_status', [AdminController::class, 'update_job_status'])->name('admin.update_job_status');
 
  //product management
  Route::get('admin/product', [ProductController::class, 'index']);
@@ -126,7 +132,6 @@ Route::get('/client/jobs', [ClientController::class, 'clientJobs']);
 Route::get('/client/job/manage_job', [ClientController::class, 'job_manage']);
 Route::get('/client/job/manage_job/{id}', [ClientController::class, 'manage_job']);
 Route::post('/client/job/manage_job_process', [ClientController::class, 'manage_job_process'])->name('client.manage_job_process');
-Route::post('/client/job/update_job_status', [ClientController::class, 'update_job_status'])->name('admin.update_job_status');
 
     // Route::get('admin/updatepassword', [AdminController::class, 'updatepassword']);
     Route::get('client/logout', function(){

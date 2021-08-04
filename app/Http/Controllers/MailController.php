@@ -15,8 +15,8 @@ class MailController extends Controller
         $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         $login_digits = "123456789";
 
-         $email = 'sudhirsinghkumar11@gmail.com';
          $model=Users::find($id);
+         $email = $model->email;
         if(!empty($model)){
             $login_id_exist = $model->login_id;
             $login_password_exist = $model->login_password;

@@ -40,7 +40,7 @@
             <tbody>
                 @foreach ($data as $list)
                 <!-- {{empty(array_search(session('GUARD_IDaaa'),json_decode($list->accepted_by)))}} -->
-             @if (empty(array_search(session('GUARD_ID'),json_decode($list->accepted_by))))
+             @if (!in_array(session('GUARD_ID'),json_decode($list->accepted_by)))
                  <tr>
                     <td>{{$list->id}}</td>
                     <td>{{$list->client_name}}</td>
@@ -62,9 +62,7 @@
                           Accept now
                            </a>
                            @endif
-                           <a class="btn btn-warning" href="{{url('guard/job-details')}}/{{$list->id}}">
-                            View details     
-                             </a>
+                            
                       </div>
                     </td>
                  

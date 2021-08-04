@@ -66,7 +66,7 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="in_time" class="control-label mb-1">In Time</label>
-                                    <input id="in_time" value="{{ $in_time }}" name="in_time" type="datetime-local"
+                                    <input id="in_time" value="{{ $in_time }}" name="in_time" type="time"
                                         class="form-control" aria-invalid="false">
                                     @error('in_time')
                                         <span class="text-danger" role="alert">
@@ -79,7 +79,7 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="out_time" class="control-label mb-1">Out Time</label>
-                                    <input id="out_time" value="{{ $out_time }}" name="out_time" type="datetime-local"
+                                    <input id="out_time" value="{{ $out_time }}" name="out_time" type="time"
                                         class="form-control" aria-invalid="false">
                                     @error('out_time')
                                         <span class="text-danger" role="alert">

@@ -48,7 +48,7 @@ class GuardAvailability extends Command
             // $result->save();
             foreach ($result as $value) {
                 $guard_data = Users::where(['id'=>$value->id])->first();
-                $guard_data->availability_time = 0;
+                $guard_data->availability_time = 1;
                 $guard_data->save();
                 $this->info($value->id);
             $msg="availability updated successfully";

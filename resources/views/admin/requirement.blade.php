@@ -39,28 +39,29 @@
                     <td>{{$list->in_time}}</td>
                     <td>{{$list->out_time}}</td>
                     <td>{{$list->location_address}}</td>
-                    <!-- <td>
+                     <td>
                         <div class="btn-group" role="group" aria-label="Basic example">
-                         <a class="btn btn-primary" href="{{url('admin/guard/view_details')}}/{{$list->id}}">
+                         {{-- <a class="btn btn-primary" href="{{url('admin/guard/view_details')}}/{{$list->id}}">
                             View     
-                        </a>
+                        </a> --}}
                        
                            @if ($list->approve == 1)
                            <a class="btn btn-primary" href="{{url('admin/newjobs/approve/0')}}/{{$list->id}}">
-                             Approved    
+                            <i class="fa fa-check" aria-hidden="true"></i>
+    
                            </a>
                            <a class="btn btn-primary" href="{{url('admin/newjobs/broadcast/')}}/{{$list->id}}">
                             Brodcast    
                           </a>
                            @elseif($list->approve == 0)
-                           <a class="btn btn-warning" href="{{url('admin/newjobs/approve/1')}}/{{$list->id}}">
-                          Not Approved     
+                           <a class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Accept Now" href="{{url('admin/newjobs/approve/1')}}/{{$list->id}}">
+                            <i class="fas fa-times"></i>
                            </a>
                            @endif
                           
                       </div>
-                    </td> -->
-                 <td>
+                    </td>  
+                 {{-- <td>
                  <form action="{{ route('admin.update_job_status') }}" method="post">
                         @csrf
                     <div class="form-group form-control-lg">
@@ -86,7 +87,7 @@
                 </button>
                 </form>
                 
-                 </td>
+                 </td> --}}
                 </tr>
                 @endforeach
                

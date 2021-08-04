@@ -31,9 +31,9 @@ class RequirementController extends Controller
         //
 
        if($approve == 1){
-        $msg = 'Job approved successfuly';
+        $msg = 'Job accepted successfuly';
        }else{
-        $msg = 'Job does not approved';
+        $msg = 'Job does not accepted';
        }
         
         $model=Requirement::find($id);

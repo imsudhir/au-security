@@ -18,6 +18,7 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th>AVAILABILITY</th>
                 <th>NAME</th>
                 <th class="text-center">EMAIL</th>
                 <th class="text-center">PHONE NUMBER</th>
@@ -32,8 +33,13 @@
         </thead>
         <tbody>
             @foreach($data as $list)
-                <tr>
+                <tr class="text-center">
                     <td>{{ $list->id }}</td>
+                    @if ($list->availability_time)
+                    <td> <span class="badge badge-success" style="background: #28a745;">YES</span></td>    
+                    @else
+                    <td> <span class="badge badge-primary" style="background: #dc3545;">NO</span></td>    
+                    @endif
                     <td>{{ $list->f_name.' '.$list->l_name }}</td>
                     <td>{{ $list->email }}</td>
                     <td>{{ $list->mobile }}</td>

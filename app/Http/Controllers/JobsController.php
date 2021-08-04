@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Requirement;
 use App\Models\Jobs;
+use App\Models\Users;
 use Illuminate\Http\Request;
 
 class JobsController extends Controller
@@ -33,9 +34,15 @@ class JobsController extends Controller
         $model=new Jobs();
         // Jobs::all();
         // return $result['data'];
-        
+        $user=Users::find(session('GUARD_ID'));
+        $user->current_job_join_date = $requirement->join_date;
+        $user->current_job_leave_date = $requirement->leave_date;
+        $user->availability_time = 0;
+        $user->save();
         $model->req_id=$id;
         $model->guard_id=session('GUARD_ID');   
+        $model->join_date=$requirement->join_date;;
+        $model->leave_date=$requirement->leave_date;
         $model->client_name=$result['data']->client_name;
         $model->location_address=$result['data']->location_address;
         $model->city=$result['data']->city;

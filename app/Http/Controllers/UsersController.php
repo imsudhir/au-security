@@ -21,6 +21,29 @@ class UsersController extends Controller
         $result['data']=Users::all()->where('role',2);
         return view('admin.guard', $result);
     }
+//     public function newjobs()
+//     {
+//         return $alljob= DB::table('requirements')
+//          ->where('requirement','>',0)
+//          ->where('approve','=',1)
+//          ->get();
+//         foreach ($alljob as $value) {
+//            # code...
+//            print_r($alljob);
+//            $result['data']= $value;
+
+//         //    print_r($value);
+//                $accepted_by = json_decode($value->accepted_by);
+//                 // in_array(session('GUARD_ID'),json_decode($value->accepted_by));
+//             //    if(in_array(session('GUARD_ID'),json_decode($value->accepted_by))){
+//             //    $result['data']= $value;
+//             //   }
+//     }
+//  return 'test';
+
+//     return $result['data'];
+//         return view('guard.newJobs', $result);
+//     }
     public function newjobs()
     {
          $result['data']= DB::table('requirements')
@@ -31,6 +54,7 @@ class UsersController extends Controller
         return view('guard.newJobs', $result);
     }
     //start guard panel
+
     public function guard(Request $request)
     {
      if($request->session()->has('GUARD_LOGIN')){
